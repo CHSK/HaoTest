@@ -182,8 +182,7 @@ GooglePlayServicesClient.OnConnectionFailedListener {
 		Bundle currentLocation = new Bundle();
 		currentLocation.putParcelable("currentLocation", cLocation);
 
-		TextView tv = new TextView(this);
-		tv=(TextView)findViewById(R.id.textView1);
+		
 		//tv.setText(test);
 		checkbox[0] = (CheckBox) findViewById(R.id.CheckIndoors);
 		checkbox[1] = (CheckBox) findViewById(R.id.CheckOutdoors);
@@ -206,6 +205,12 @@ GooglePlayServicesClient.OnConnectionFailedListener {
 		b1.setBackground(getResources().getDrawable(R.drawable.rectangleyellow));
 
 		 Intent intent = new Intent(this, Map.class);
+		 TextView tv = (TextView) findViewById(R.id.keywords);
+		 String s = tv.getText().toString();
+			
+
+			 intent.putExtra("keywords", s);
+		 
 		 
 			 intent.putExtra("areaCode", areaCode);
 		 
@@ -215,7 +220,7 @@ GooglePlayServicesClient.OnConnectionFailedListener {
 				 //this is the line you need to retrieve the checks in the next intent
 			//	 boolean checks[] = getIntent().getBooleanArrayExtra("checks");
 		 startActivity(intent);
-		 Log.v("blah", "blah blah");
+		
 	}
 
 	protected void onStart() {
